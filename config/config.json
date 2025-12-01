@@ -1,0 +1,28 @@
+{
+  "twitter": {
+    "cookies_file": "config/cookies.json",
+    "base_url": "https://x.com",
+    "search_query": "Makan Bergizi Gratis OR MBG lang:id",
+    "max_tweets": 5000,
+    "days_back": 30,
+    "use_time_filter": true
+  },
+  "database": {
+    "mongo_uri": "mongodb://localhost:27017/",
+    "db_name": "mbg_sentiment_db",
+    "collection_prefix": "tweets_",
+    "collection_date_format": "YYYYMMDD"
+  },
+  "scraper": {
+    "scroll_min_pause": 1.0,
+    "scroll_max_pause": 3.0,
+    "base_backoff": 5,
+    "max_retries": 3,
+    "scroll_increment": 500
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(levelname)s - %(message)s",
+    "file": "logs/etl.log"
+  }
+}

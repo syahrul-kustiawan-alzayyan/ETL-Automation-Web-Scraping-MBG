@@ -1,0 +1,87 @@
+# Environment variables #
+##########################
+.env
+.env.local
+.env.*.local
+.env.production
+.env.staging
+.env.development
+environment.yml
+environment.yaml
+
+# Virtual Environment #
+##########################
+venv/
+ENV/
+.env/
+env/
+.venv/
+
+# Compiled Python files #
+##########################
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# OS generated files #
+##########################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+*.tmp
+*.temp
+
+# IDE #
+##########################
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.atom/
+
+# Browser automation temp files #
+##########################
+chromedriver*
+msedgedriver*
+geckodriver*
+
+# Sensitive credential files #
+##########################
+config/cookies.json
+config/private_*.json
+*.key
+*.pem
+*.crt
+*.cert
+secrets/
+credentials/
+tokens/
+passwords/
+api_keys/
+*.private
+secret_token.rb
+config/master.key
+config/credentials.yml.enc
+
+# Temporary files #
+##########################
+*~
+*.bak
+*.backup
+*.old
+tmp/
+temp/
+*.log
+
+# Local config that might contain sensitive data #
+##########################
+config/local_*.json
+local_settings.py
+settings_local.py
