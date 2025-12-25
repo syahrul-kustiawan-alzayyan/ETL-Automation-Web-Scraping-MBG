@@ -1,28 +1,39 @@
 {
   "twitter": {
-    "cookies_file": "config/cookies.json",
+    "cookies_file": "twitter_cookies.json",
     "base_url": "https://x.com",
-    "search_query": "Makan Bergizi Gratis OR MBG lang:id",
-    "max_tweets": 5000,
+    "query_1": "Makan Bergizi Gratis OR MBG lang:id",
+    "max_tweets": 10000,
     "days_back": 30,
-    "use_time_filter": true
+    "use_time_filter": true,
+    "start_date": "2025-09-01",
+    "end_date": "2025-09-30",
+    "daily_processing": true
   },
   "database": {
     "mongo_uri": "mongodb://localhost:27017/",
-    "db_name": "mbg_sentiment_db",
-    "collection_prefix": "tweets_",
+    "db_name": "MBG_Sentiment_Monthly",
+    "collection_prefix": "monthly_tweets_",
     "collection_date_format": "YYYYMMDD"
   },
   "scraper": {
-    "scroll_min_pause": 1.0,
-    "scroll_max_pause": 3.0,
+    "scroll_min_pause": 0.01,
+    "scroll_max_pause": 0.05,
     "base_backoff": 5,
     "max_retries": 3,
-    "scroll_increment": 500
+    "max_retry_attempts": 10,
+    "scroll_increment": 500,
+    "use_headless": true
   },
   "logging": {
     "level": "INFO",
     "format": "%(asctime)s - %(levelname)s - %(message)s",
     "file": "logs/etl.log"
+  },
+  "etl": {
+    "min_daily_delay": 10,
+    "max_daily_delay": 30,
+    "min_monthly_delay": 60,
+    "max_monthly_delay": 120
   }
 }

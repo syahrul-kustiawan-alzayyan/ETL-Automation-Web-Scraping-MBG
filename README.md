@@ -1,345 +1,244 @@
-# ETL Automation - Web Scraper for MBG Sentiment Analysis with Dashboard Analytics
+# ETL Automation for MBG Sentiment Analysis
 
-<p align="center">
-  <img src="https://img.shields.io/badge/python-3.9+-blue.svg" alt="Python Version">
-  <img src="https://img.shields.io/badge/mongodb-v4.0+-green.svg" alt="MongoDB">
-  <img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="License">
-  <img src="https://img.shields.io/badge/selenium-4.15.0-purple.svg" alt="Selenium">
-</p>
+Repository ini berisi kode untuk mengotomasi proses ETL (Extract, Transform, Load) data dari Twitter/X untuk analisis sentimen terkait program Makan Bergizi Gratis (MBG).
 
-<p align="center">
-  <strong>Advanced Web Scraper & ETL System for Indonesian Government Program Sentiment Analysis with Analytics Dashboard</strong>
-</p>
+## Deskripsi
 
-<p align="center">
-  <em>Advanced ETL Automation for scraping and analyzing public sentiment towards Free Nutritious Meals (MBG) Program on social media platforms with PowerBI Dashboard Analytics</em>
-</p>
+Proyek ini menggunakan teknik scraping canggih untuk mendapatkan data tweet dari Twitter/X, kemudian melakukan proses pembersihan data dan pelabelan sentimen. Sistem dirancang untuk bersifat tangguh (resilient) dengan kemampuan melanjutkan proses dari titik terakhir jika terputus.
 
----
+## Fitur Utama
 
-## 🎯 Project Overview
+- **Resilient ETL**: Dapat melanjutkan proses dari titik terakhir jika terputus
+- **Scraping Anti-Detection**: Menggunakan teknik anti-detection untuk menghindari pemblokiran
+- **Data Cleaning**: Membersihkan data mentah dari Twitter
+- **Sentiment Labeling**: Melabeli sentimen dari tweet (positif, negatif, netral)
+- **Daily & Monthly Aggregation**: Mengumpulkan data harian dan bulanan
+- **MongoDB Integration**: Menyimpan data ke database MongoDB
 
-**ETL-Automation-MBG-Sentiment** is a sophisticated **Web Scraper** and **ETL (Extract, Transform, Load)** system designed to collect, process, and analyze public opinions related to Indonesia's **Free Nutritious Meals (Makanan Bergizi Gratis - MBG)** government program on social media platforms, particularly X (formerly Twitter). System dilengkapi dengan **Dashboard Analytics** untuk visualisasi data sentimen.
-
-This project implements advanced **web scraping techniques** using **Selenium** and **Beautiful Soup**, combined with efficient **MongoDB** storage systems to enable comprehensive **Sentiment Analysis** for government policy monitoring, with integrated **PowerBI dashboard** for real-time analytics.
-
----
-
-## 🚀 Key Features
-
-| Feature | Description |
-|---------|-------------|
-| **Maximum Tweet Extraction** | Implements 5 different query approaches to capture maximum tweets per day |
-| **Multi-Query Strategy** | Advanced search techniques to maximize data collection coverage |
-| **Real-Time Collection** | Continuous scraping with intelligent pause management |
-| **Daily Organization** | Automatic data separation by collection date into separate MongoDB collections |
-| **Location Detection** | Automatic detection of Indonesian locations from tweet content using comprehensive database |
-| **Duplicate Prevention** | Dual-filter system to prevent duplicate content storage |
-| **Rate Limit Handling** | Intelligent anti-detection mechanisms to avoid platform restrictions |
-| **Efficient Processing** | High-speed data extraction and transformation |
-| **Analytics Dashboard** | Integrated PowerBI dashboard for sentiment visualization and reporting |
-
----
-
-## 🏗️ Architecture Overview
-
-```mermaid
-graph TD
-    A[X Social Media Platform] --> B[Super Efficient Scraper]
-    B --> C[Multi-Query Processing]
-    C --> D[Real-Time Data Extraction]
-    D --> E[Daily Collection Manager]
-    E --> F[(MongoDB Database)]
-    F --> G[Sentiment Analysis Ready]
-    G --> H[Analytics Dashboard]
-    H --> I[Policy Monitoring]
-    
-    style A fill:#ff6b6b
-    style B fill:#4ecdc4
-    style F fill:#95e1d3
-    style H fill:#f3d250
-    style I fill:#96ceb4
-```
-
-### Core Components:
-
-- **Super Efficient Scraper**: Advanced web scraping engine with multi-query capabilities
-- **Daily Collection Manager**: Automated MongoDB collection system based on dates  
-- **Location Intelligence**: Comprehensive Indonesian location database detection
-- **Anti-Detection System**: Smart rate limiting bypass mechanisms
-- **Analytics Dashboard**: PowerBI integration for sentiment visualization
-
----
-
-## 📁 Project Structure
+## Struktur Proyek
 
 ```
 ETL-Automation-MBG-Sentiment/
-├── config/                      # Configuration directory
-│   ├── config.json              # Main application configuration
-│   ├── cookies.json             # Session cookies (manual input required)
-│   └── indonesia_locations.json # Indonesian locations database
-├── data/                        # ETL results data storage
-├── Dashboard/                   # Analytics dashboard files (PowerBI, Tableau, etc.)
-│   ├── mbg_sentiment_dashboard.pbix # PowerBI dashboard template
-│   ├── data_export_for_powerbi.json # Exported data ready for PowerBI
-│   └── visualization_specs.md   # Dashboard specifications
-├── logs/                        # Application log files
-├── src/                         # Main source code
-│   └── super_efficient_scraper.py # Maximum efficiency scraper module
-├── utils.py                     # Collection management utilities
-├── max_tweets_etl.py            # Main ETL execution file
-├── requirements.txt             # Python dependencies
-└── README.md                    # Documentation
+├── config/
+│   ├── config.json                 # Konfigurasi sistem
+│   └── indonesia_locations.json    # Konfigurasi lokasi
+├── data/                           # Direktori output data
+├── logs/                           # Log aktivitas sistem
+├── src/
+│   └── resilient_scraper.py        # Scraper utama
+├── requirements.txt                # Daftar dependensi
+├── resilient_etl.py                # File utama ETL
+├── twitter_cookies.json            # Cookie login Twitter
+├── utils.py                        # Fungsi-fungsi utilitas
+└── backup_non_related_files/       # Backup file-file yang tidak terkait
 ```
 
----
+## Persiapan dan Instalasi
 
-## 🛠️ Technologies & Libraries
+### 1. Instalasi Python dan Git
 
-### Core Technologies:
-- **Python 3.9+** - Main programming language
-- **Selenium 4.15.0** - Browser automation for dynamic content
-- **Beautiful Soup 4** - HTML parsing and content extraction
-- **MongoDB** - NoSQL database for flexible data storage
-- **Undetected ChromeDriver** - Stealth browser automation
-- **PowerBI** - Analytics and visualization dashboard
+Pastikan Anda memiliki Python 3.8+ dan Git terinstal di sistem Anda. Jika belum, Anda bisa mengunduhnya dari:
 
-### Additional Libraries:
-- **Requests** - HTTP requests handling
-- **PyMongo** - MongoDB Python driver
-- **dateutil** - Date parsing and manipulation
-- **undetected-chromedriver** - Anti-bot detection evasion
+- **Python**: https://www.python.org/downloads/
+- **Git**: https://git-scm.com/downloads
 
----
+### 2. Clone Repository
 
-## 📋 Installation Guide
-
-### Prerequisites
-- Python 3.9 or higher
-- MongoDB Community Server
-- Chrome or Chromium browser
-- PowerBI Desktop (optional, for dashboard visualization)
-
-### Setup Instructions
-
-1. **Clone the Repository**
+1. Buka Command Prompt atau Git Bash
+2. Clone repository ini:
    ```bash
-   git clone https://github.com/username/ETL-Automation-MBG-Sentiment.git
+   git clone <URL_REPOSITORY>
    cd ETL-Automation-MBG-Sentiment
    ```
 
-2. **Create Virtual Environment** (Recommended)
-   ```bash
-   python -m venv venv
-   ```
+### 3. Instalasi Dependencies
 
-3. **Activate Virtual Environment**
-   - **Windows:**
-     ```bash
-     venv\Scripts\activate
-     ```
-   - **macOS/Linux:**
-     ```bash
-     source venv/bin/activate
-     ```
-
-4. **Install Dependencies**
+1. Instal dependensi yang dibutuhkan:
    ```bash
    pip install -r requirements.txt
    ```
 
-5. **Start MongoDB Service**
-   Ensure MongoDB is running on your system
+   Jika Anda menggunakan environment virtual (disarankan):
+   ```bash
+   # Membuat environment virtual
+   python -m venv venv
+   # Aktifkan environment (Windows)
+   venv\Scripts\activate
+   # Instal dependensi
+   pip install -r requirements.txt
+   ```
 
----
+### 4. Instalasi Chrome Driver
 
-## ⚙️ Configuration
+**undetected_chromedriver** akan secara otomatis mengunduh dan menginstal ChromeDriver yang sesuai. Namun, pastikan Anda memiliki Google Chrome terinstal di sistem Anda:
 
-### 1. Session Cookies Setup
-Create `config/cookies.json` with valid Twitter/X session cookies:
-```json
-[
-  {"name": "auth_token", "value": "your_auth_token", "domain": ".x.com", "path": "/"},
-  {"name": "ct0", "value": "your_ct0_token", "domain": ".x.com", "path": "/"},
-  {"name": "guest_id", "value": "your_guest_id", "domain": ".x.com", "path": "/"}
-]
-```
+1. Unduh dan instal Google Chrome terbaru dari: https://www.google.com/chrome/
+2. Verifikasi instalasi Chrome dengan membukanya
+3. Saat pertama kali menjalankan script, **undetected_chromedriver** akan secara otomatis mengelola ChromeDriver untuk Anda
 
-> **Note**: Cookies can be extracted using browser extensions like "EditThisCookie" when logged into X.com
+Jika Anda mengalami masalah, Anda juga bisa menginstal ChromeDriver secara manual:
+1. Cek versi Google Chrome Anda
+2. Download ChromeDriver yang sesuai dari: https://chromedriver.chromium.org/
+3. Simpan di folder PATH atau folder proyek
 
-### 2. Main Configuration
-Adjust settings in `config/config.json`:
+### 5. Setup Database MongoDB
+
+#### Pilihan 1: MongoDB Atlas (Disarankan - Online)
+1. Kunjungi: https://www.mongodb.com/atlas
+2. Buat akun gratis atau login jika sudah memiliki akun
+3. Buat cluster baru dengan spesifikasi gratis
+4. Dalam cluster, buat database user dengan username dan password
+5. Dapatkan connection string: Klik "Connect" → "Connect your application" → Copy connection string
+6. Ganti `<password>` dalam connection string dengan password user yang Anda buat
+7. Masukkan connection string ke file `config/config.json` di bagian `database.mongo_uri`
+
+#### Pilihan 2: MongoDB Lokal
+1. Download dan instal MongoDB Community Server: https://www.mongodb.com/try/download/community
+2. Jalankan MongoDB service di sistem Anda
+3. Gunakan connection string: `mongodb://localhost:27017` atau sesuaikan port jika berbeda
+4. Masukkan ke file `config/config.json` di bagian `database.mongo_uri`
+
+### 6. Konfigurasi Cookie Twitter/X
+
+Untuk dapat mengakses data Twitter/X, Anda memerlukan cookie otentikasi. Ada beberapa cara:
+
+#### Cara 1: Menggunakan Browser Extension (Disarankan)
+1. Instal browser extension "Get Cookies.txt" di Chrome/Edge
+2. Login ke https://x.com dengan akun Twitter/X Anda
+3. Ekstrak cookies dan simpan sebagai file `twitter_cookies.json`
+4. File ini harus berisi objek array dengan format:
+   ```json
+   [
+     {"name": "auth_token", "value": "your_auth_token_here"},
+     {"name": "ct0", "value": "your_ct0_cookie_here"},
+     {"name": "guest_id", "value": "your_guest_id_here"},
+     {"name": "kdt", "value": "your_kdt_cookie_here"},
+     {"name": "twid", "value": "your_twid_cookie_here"}
+   ]
+   ```
+
+#### Cara 2: Manual (Memerlukan pengetahuan teknis)
+1. Login ke https://x.com
+2. Buka Developer Tools (F12)
+3. Pergi ke tab "Application" atau "Storage"
+4. Cari "Cookies" → "https://x.com"
+5. Cari cookie yang diperlukan (auth_token, ct0, ds_t, guest_id, kdt, twid)
+6. Tambahkan ke file `twitter_cookies.json`
+
+**Catatan Penting**: Cookie akan kadaluarsa secara berkala, jadi Anda perlu memperbaruinya secara rutin.
+
+## Konfigurasi
+
+File `config/config.json` berisi beberapa bagian penting:
+- `database`: Konfigurasi koneksi MongoDB
+- `twitter`: Parameter untuk scraping (rentang waktu, hashtag, dll)
+- `logging`: Konfigurasi logging
+- `sentiment`: Parameter untuk analisis sentimen
+- `scraper`: Parameter untuk proses scraping
+- `etl`: Parameter untuk proses ETL
+
+Contoh konfigurasi:
 ```json
 {
-  "twitter": {
-    "search_query": "Makan Bergizi Gratis OR MBG lang:id",
-    "days_back": 7,
-    "max_tweets": 5000
-  },
   "database": {
-    "mongo_uri": "mongodb://localhost:27017/",
+    "mongo_uri": "mongodb+srv://username:password@cluster.mongodb.net/",
     "db_name": "mbg_sentiment_db",
     "collection_prefix": "tweets_"
+  },
+  "twitter": {
+    "cookies_file": "twitter_cookies.json",
+    "max_tweets": 1000,
+    "days_back": 30,
+    "query_1": "Makan Bergizi Gratis OR MBG lang:id",
+    "query_2": "Makan Gratis OR MBG lang:id",
+    "start_date": "2024-09-01",
+    "end_date": "2024-09-30"
+  },
+  "scraper": {
+    "scroll_min_pause": 1.0,
+    "scroll_max_pause": 3.0,
+    "max_retries": 3,
+    "base_backoff": 8
   }
 }
 ```
 
----
+## Penggunaan
 
-## ▶️ Usage
+### Menjalankan ETL Utama
 
-### Running the ETL Process
-Execute the maximum tweet collection system:
-
+Jalankan ETL utama untuk mengumpulkan data dari rentang tanggal tertentu:
 ```bash
-python max_tweets_etl.py
+python resilient_etl.py
 ```
 
-### Expected Output
-The system will:
-1. Collect tweets from the last 7 days
-2. Store data in daily collections (e.g., `tweets_20251201`)
-3. Perform location detection and duplicate prevention
-4. Generate detailed logs in the `logs/` directory
-5. Export processed data to `Dashboard/` for analytics
+### Menjalankan dengan parameter khusus
 
-### Dashboard Integration
-After ETL completion:
-1. Navigate to the `Dashboard/` folder
-2. Open `mbg_sentiment_dashboard.pbix` in PowerBI Desktop
-3. Connect to the exported data files
-4. Customize and deploy the dashboard as needed
-
----
-
-## 🔐 Security Considerations
-
-- **Sensitive Files**: `cookies.json` contains sensitive session information and should never be committed to version control
-- **Environment Variables**: Use `.env` file for additional sensitive configuration
-- **Account Safety**: Use burner accounts for scraping activities
-- **Rate Limiting**: Built-in intelligent delay systems to prevent account suspension
-
----
-
-## 📊 Data Structure & Output
-
-### MongoDB Collections Format
-Each day creates a separate collection named `tweets_YYYYMMDD`:
-```json
-{
-  "_id": "tweet_unique_id",
-  "content": {
-    "text": "original_tweet_text",
-    "clean_text": "processed_for_analysis"
-  },
-  "metadata": {
-    "author_name": "username",
-    "author_handle": "@handle",
-    "created_at": "ISO_date_time",
-    "location": "detected_location",
-    "tweet_url": "https://x.com/..."
-  },
-  "metrics": {
-    "reply_count": 0,
-    "retweet_count": 0,
-    "like_count": 0
-  }
-}
+Anda juga dapat menjalankan dengan tanggal spesifik:
+```bash
+# Jalankan dari kode, edit resilient_etl.py
+# Di bagian akhir file, uncomment dan sesuaikan:
+run_etl("2024-09-01", "2024-09-30")  # September
+# atau
+process_existing_data_range("2024-09-01", "2024-09-30")  # Proses ulang data yang sudah ada
 ```
 
-### Dashboard Integration Format
-Data exported to `Dashboard/` in formats compatible with PowerBI for visual analytics.
+### Proses yang Dilakukan
 
----
+1. **Extract**: Mengumpulkan tweet dari Twitter/X berdasarkan kueri dan rentang tanggal
+2. **Transform**: Membersihkan data dan menganalisis sentimen
+3. **Load**: Menyimpan data ke MongoDB dan file JSON harian & bulanan
 
-## 🌟 Why Choose This Solution?
+### Output yang Dihasilkan
 
-| Aspect | This Solution | Other Methods |
-|--------|---------------|---------------|
-| **Efficiency** | Multi-query approach, maximum tweet capture | Single query method |
-| **Accuracy** | Dual location detection, low duplication | Basic keyword search |
-| **Scalability** | Daily collection management | Single collection storage |
-| **Resilience** | Anti-detection, rate limit handling | Easy detection/blocks |
-| **Analytics** | Integrated PowerBI dashboard | No visualization tools |
-| **Maintenance** | Automated, intelligent | Manual intensive |
+- Data harian disimpan di folder `data/` dengan format: `mbg_sentiment_db.tweets_YYYY-MM-DD_labeled.json`
+- Data bulanan disimpan di folder `data/` dengan format: `mbg_sentiment_db.tweets_YYYY-MM_labeled.json`
+- Log aktivitas disimpan di folder `logs/`
+- Data juga disimpan ke MongoDB sesuai konfigurasi
 
----
+## Fungsi Utama
 
-## 📈 Impact & Benefits
+- `run_etl()`: Fungsi utama untuk menjalankan proses ETL dari awal atau melanjutkan dari titik terakhir
+- `process_existing_data_range()`: Untuk memproses ulang data yang sudah ada di database
+- `run_etl(start_date, end_date)`: Menjalankan ETL dengan rentang tanggal tertentu
+- `run_etl(start_date, end_date, continue_from_last=False)`: Menjalankan ETL dengan opsi untuk mengabaikan data yang sudah ada
 
-### For Government Agencies
-- **Real-time Policy Monitoring**: Track public sentiment on MBG program
-- **Data-Driven Decisions**: Evidence-based policy adjustments
-- **Geographic Analysis**: Region-specific feedback insights
-- **Visual Analytics**: PowerBI dashboards for quick insights
+## Teknologi yang Digunakan
 
-### For Data Scientists
-- **Clean Dataset**: Pre-processed, structured tweet data
-- **Rich Metadata**: Comprehensive contextual information
-- **Easy Analysis**: Ready-for-analysis format
-- **Dashboard Templates**: Ready-to-use PowerBI templates
+- **Python**: Bahasa pemrograman utama
+- **Selenium** dengan **undetected_chromedriver**: Otomasi browser untuk scraping
+- **MongoDB**: Database NoSQL untuk penyimpanan data
+- **BeautifulSoup**: Parsing HTML untuk ekstraksi data
+- **Transformers** (HuggingFace): Untuk analisis sentimen dalam bahasa Indonesia
+- **Tqdm**: Progress bar untuk visualisasi proses
+- **Regex**: Pemrosesan teks dan validasi
+- **Pymongo**: Driver MongoDB untuk Python
 
----
+## Troubleshooting
 
-## 📊 Dashboard Features
+### 1. Error saat scraping
+- Pastikan cookie masih valid
+- Periksa koneksi internet
+- Coba kurangi kecepatan scraping di konfigurasi
 
-The `Dashboard/` folder includes:
+### 2. Error koneksi database
+- Pastikan string koneksi MongoDB benar
+- Pastikan firewall tidak memblokir koneksi
+- Cek apakah MongoDB service berjalan (untuk lokal)
 
-- **PowerBI Template**: Ready-to-use PowerBI dashboard template (`mbg_sentiment_dashboard.pbix`)
-- **Export Formats**: Structured data exports ready for visualization
-- **Specification docs**: Detailed instructions for dashboard customization
-- **Sample Visualizations**: Pre-configured charts for sentiment analysis:
-  - Sentiment trends over time
-  - Geographic sentiment mapping
-  - Top keywords and hashtags
-  - Engagement metrics
-  - Location-based analysis
+### 3. Rate limiting
+- Sistem sudah memiliki exponential backoff, tapi jika masih terjadi:
+- Tambahkan delay di konfigurasi
+- Kurangi jumlah maksimum tweet per hari
 
----
+### 4. Memory issues
+- Kurangi batch size di fungsi-fungsi proses
+- Proses lebih sedikit hari dalam satu eksekusi
 
-## 🔐 Security & Privacy
+## Kontribusi
 
-### .gitignore Protection
-The project includes a comprehensive `.gitignore` file that ensures:
-- **Session cookies** (`config/cookies.json`) are never committed
-- **Environment variables** (`.env`) remain local
-- **Database credentials** stay secure
-- **Private keys** and certificates are protected
-- **Log files** and temporary data don't clutter the repository
+Silakan buat pull request jika ingin berkontribusi pada proyek ini.
 
-### Security Best Practices
-- Never commit sensitive files to version control
-- Use burner accounts for scraping activities
-- Regularly rotate session cookies
-- Keep MongoDB authentication credentials secure
+## Lisensi
 
-## 🤝 Contributing
-
-We welcome contributions! Feel free to:
-- 🐛 Report bugs
-- 💡 Suggest features
-- 🔧 Submit pull requests
-- 📖 Improve documentation
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 👨‍💻 Author
-
-Built for Indonesian government program analysis and public sentiment monitoring with integrated analytics dashboard.
-
----
-
-<span align="center">
-
-**Ready to collect maximum tweets for MBG program analysis with analytics dashboard?**
-
-⭐ Star this repository if it helps your project!
-
-</span>
+[MIT License]
